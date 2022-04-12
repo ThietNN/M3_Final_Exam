@@ -25,10 +25,5 @@ values ('PS5', 10000, 'black', 'brand new ps5', 1),
        ('Nintendo Switch', 20000, 'red-blue', 'standard edition',2),
        ('Xbox One S', 30000, 'white', 'another choice if you hate Sony', 3);
 
-select p.name, p.price, p.color, p.description, c.name as catetory from product p join category c on p.category_ID = c.id where p.id = 2;
 
-
-delete from product where id = 2;
-update product set name = ?, price = ?, color = ?, description = ?, category_ID = ? where id = ?;
-insert into product(name,price,color,description,category_ID) value (?, ?, ?, ?, ?, ?);
-select p.id, p.name, p.price, p.color, p.description, c.name as category from product p join category c on p.category_ID = c.id where p.name = ?;
+select p.id, p.name, p.price, p.color, p.description, c.id as categoryId , c.name as catetory from product p join category c on p.category_ID = c.id;

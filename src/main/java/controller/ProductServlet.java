@@ -107,6 +107,8 @@ public class ProductServlet extends HttpServlet {
     }
     private void showUpdateForm(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException{
         int id = Integer.parseInt(request.getParameter("id"));
+        List<Category> categoryList = categoryDAO.findAll();
+        request.setAttribute("categoryList", categoryList);
         Product product = productDAO.findById(id);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("product/update.jsp");
         request.setAttribute("product",product);
@@ -144,16 +146,4 @@ public class ProductServlet extends HttpServlet {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("product/list.jsp");
         requestDispatcher.forward(request,response);
     }
-
-
-
-
-
-
-
-
-
-
-
-
 }

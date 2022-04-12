@@ -11,11 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductDAO implements IProductDAO {
-    private static final String FIND_ALL = "select p.id, p.name, p.price, p.color, p.description, c.name as catetory from product p join category c on p.category_ID = c.id;";
+    private static final String FIND_ALL = "select p.id, p.name, p.price, p.color, p.description, c.id as categoryId , c.name as category from product p join category c on p.category_ID = c.id;";
     private static final String FIND_BY_ID = "select p.id,  p.name, p.price, p.color, p.description, c.name as catetory from product p join category c on p.category_ID = c.id where p.id = ?;";
     private static final String FIND_BY_NAME = "select p.id, p.name, p.price, p.color, p.description, c.name as category from product p join category c on p.category_ID = c.id where p.name = ?;";
     private static final String DELETE_BY_ID = "delete from product where id = ?;";
-    private static final String INSERT = "insert into product(name,price,color,description,category_ID) value (?, ?, ?, ?, ?, ?);";
+    private static final String INSERT = "insert into product(name,price,color,description,category_ID) value (?, ?, ?, ?, ?);";
     private static final String UPDATE = "update product set name = ?, price = ?, color = ?, description = ?, category_ID = ? where id = ?;";
     Connection connection = SingletonConnection.getConnection();
 
@@ -30,8 +30,9 @@ public class ProductDAO implements IProductDAO {
                 int price = resultSet.getInt("price");
                 String color = resultSet.getString("color");
                 String description = resultSet.getString("description");
+                int categoryId = resultSet.getInt("categoryId");
                 String categoryName = resultSet.getString("category");
-                Category category = new Category(categoryName);
+                Category category = new Category(categoryId, categoryName);
                 Product product = new Product(id, name, price, color, description, category);
                 productList.add(product);
             }
@@ -39,6 +40,11 @@ public class ProductDAO implements IProductDAO {
             e.printStackTrace();
         }
         return productList;
+    }
+
+    public static void main(String[] args) {
+        ProductDAO productDAO = new ProductDAO();
+        System.out.println(productDAO.findAll());
     }
 
     @Override

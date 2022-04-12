@@ -15,7 +15,7 @@
         <table border="1" cellpadding="5">
             <caption>
                 <h2>
-                    Edit Product
+                    Update Product
                 </h2>
             </caption>
             <c:if test="${product != null}">
@@ -56,7 +56,7 @@
             <tr>
                 <th>Category</th>
                 <td>
-                    <select name="categoryList" >
+                    <select name="categoryId" >
                         <c:forEach items="${categoryList}" var="category">
                             <option value="${category.id}">${category.name}</option>
                         </c:forEach>
