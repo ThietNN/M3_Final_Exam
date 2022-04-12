@@ -46,11 +46,13 @@
                 </td>
             </tr>
             <tr>
+                <td>
                 <select name="categoryList" >
                     <c:forEach items="${categoryList}" var="category">
                     <option value="${category.id}">${category.name}</option>
                     </c:forEach>
                 </select>
+                </td>
             </tr>
 
             <tr>

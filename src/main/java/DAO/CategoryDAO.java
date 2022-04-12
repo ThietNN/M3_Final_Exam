@@ -28,7 +28,7 @@ public class CategoryDAO {
         }
         return category;
     }
-    public List<Product> findAll() {
+    public List<Category> findAll() {
         List<Category> categoryList = new ArrayList<>();
         try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL);) {
             ResultSet resultSet = preparedStatement.executeQuery();

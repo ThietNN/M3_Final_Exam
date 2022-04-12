@@ -100,6 +100,8 @@ public class ProductServlet extends HttpServlet {
         requestDispatcher.forward(request,response);
     }
     private void showCreateForm(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException{
+        List<Category> categoryList = categoryDAO.findAll();
+        request.setAttribute("categoryList", categoryList);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("product/create.jsp");
         requestDispatcher.forward(request,response);
     }
