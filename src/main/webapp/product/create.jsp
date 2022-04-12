@@ -16,12 +16,6 @@
                 <h2>Add New Product</h2>
             </caption>
             <tr>
-                <th>ID: </th>
-                <td>
-                    <input type="number" name="id" id="id" size="45"/>
-                </td>
-            </tr>
-            <tr>
                 <th>Product Name:</th>
                 <td>
                     <input type="text" name="name" id="name" size="45"/>
@@ -46,6 +40,7 @@
                 </td>
             </tr>
             <tr>
+                <th>Category</th>
                 <td>
                 <select name="categoryList" >
                     <c:forEach items="${categoryList}" var="category">
